@@ -17,7 +17,7 @@ public class Exemplo2 {
 	*/
 	
 	int n;
-	char s;
+	String s;
 	
 	System.out.printf("Informe um Número Inteiro: ");
 	n = entrada.nextInt();
@@ -25,7 +25,8 @@ public class Exemplo2 {
 	entrada.nextLine();
 	
 	System.out.printf("Informe uma cadeia de caracteres\n");
-	s = entrada.nextLine();
+	s = entrada.next();
+	System.out.println(s);
 				
 	}
 }
