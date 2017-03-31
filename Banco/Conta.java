@@ -2,6 +2,10 @@ class Conta{
 	int numero;
 	String dono;
 	double saldo;	
+		
+	public double consulta_saldo(){
+		return this.saldo;		
+		}
 	
 	public boolean sacar(double valorSaque){
 			
