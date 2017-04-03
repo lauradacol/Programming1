@@ -1,6 +1,6 @@
 class Conta{
 	int numero;
-	String dono;
+	Pessoa pessoa;
 	double saldo;	
 
 	public void printOperacao(){
@@ -42,7 +42,7 @@ class Conta{
 		if (verificador == true){
 			contaDestino.saldo+=valorTransferencia;
 			printOperacao();
-		}
+			}
 		}
 	}
 
