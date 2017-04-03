@@ -1,34 +1,115 @@
 import java.util.Scanner;
+import java.util.HashMap;
+
 
 class Programa{
 	public static void main(String[] args){
+		
+		/*Criando o objeto entrada*/
 		Scanner entrada = new Scanner(System.in);
-		
-		Conta c1 = new Conta();
-		
+
+		/* 
+		 * Criando contas
+		 */
+		Conta c1 = new Conta();		
 		c1.numero = 12345;
-		c1.dono = "Fulana";
+		c1.dono = "Maria";
 		c1.saldo = 300.00;
-	
-						
-		System.out.println("Digite o valor para saque: ");
-		boolean saque = c1.sacar(entrada.nextInt());
-		
-		if (saque == true){
-			System.out.println("Saque realizado com sucesso");
-			System.out.println("Saldo final: " + c1.saldo);
-		}
-		else{
-			System.out.println("Saldo insuficiente para saque ou valor inválido");
-			}
-		
-		System.out.println("Digite o valor para depósito: ");
-		double deposito = c1.deposito(entrada.nextInt());
-		System.out.println("Saldo final: " + deposito);
-		
-		double saldo = c1.consulta_saldo();
-		System.out.println("Saldo: " + saldo);		
 			
+		Conta c2 = new Conta();
+		c2.numero = 54321;
+		c2.dono = "João";
+		c2.saldo = 300.00;
+		
+		/*Declarando o HashMap*/
+		HashMap<Integer, Conta> hmap = new HashMap<Integer, Conta>();
+		
+		hmap.put(12345, c1);
+		hmap.put(54321, c2);
+
+		/*Usuário informa a conta*/
+		
+		int escolha1=0;
+		
+		do{
+			if(escolha1==0){
+				System.out.println("Contas cadastradas: ");
+				System.out.println(c1.numero);
+				System.out.println(c2.numero);
+				
+				System.out.println("Informe o número da sua conta:");
+				int numero_conta = entrada.nextInt();
+				Conta conta = hmap.get(numero_conta);
+				
+				/*Menu inicial*/
+				int escolha = 0;		
+				do{
+					System.out.println("Bem vindo ao Menu Inicial! \n Digite:\n");
+					System.out.println("1 para consultar seu saldo");
+					System.out.println("2 para efetuar um saque");
+					System.out.println("3 para efetuar um depósito");
+					System.out.println("4 para efetuar uma transferência");
+					System.out.println("5 para exibir dados da conta");
+					System.out.println("6 para sair");
+					
+					escolha = entrada.nextInt();
+					
+					if (escolha==1){
+						conta.consultaSaldo();
+						}			
+					
+					else if(escolha==2){
+						System.out.println("Digite o valor para saque: ");
+						conta.sacar(entrada.nextInt());
+					}			
+					
+					else if(escolha==3){
+						System.out.println("Digite o valor para depósito: ");
+						conta.deposito(entrada.nextInt());
+					}
+					
+					else if(escolha==4){
+						System.out.println("Informe o valor da transferência");
+						double valorTransferencia = entrada.nextInt();				
+						
+						System.out.println("Informe a conta destino: ");
+						int NumeroContaDestino = entrada.nextInt();
+						Conta contaDestino = hmap.get(NumeroContaDestino);
+						
+						conta.transferencia(contaDestino, valorTransferencia);
+		
+						}
+					
+					
+					else if(escolha==5){
+						System.out.println("Número da conta: " + conta.numero);
+						System.out.println("Titular da conta: " + conta.dono);
+						System.out.println("Saldo: " + conta.saldo);
+						System.out.println("---------------------");
+						}
+								
+					else if(escolha==6){
+						System.out.println("Deseja logar em outra conta? 1-Sim, 2-Não");
+						int escolha2 = entrada.nextInt();
+						
+						if (escolha2==1){
+							escolha1=0;
+							}
+						
+						else{
+							escolha1=1;
+							}
+						}
+							
+					} while(escolha!=6);
+					
+				}			
+		}while(escolha1==0);
+		
+
+		
+
+					
 	}
 	
 }
