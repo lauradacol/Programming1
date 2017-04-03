@@ -105,10 +105,6 @@ class Programa{
 					
 				}			
 		}while(escolha1==0);
-		
-
-		
-
 					
 	}
 	
