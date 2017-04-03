@@ -9,16 +9,30 @@ class Programa{
 		Scanner entrada = new Scanner(System.in);
 
 		/* 
+		 * Criando pessoas
+		 */
+		Pessoa p1 = new Pessoa();
+		p1.nome = "Maria";
+		p1.cpf = "12345678910";
+		p1.endereco = "Rua XXX";
+		
+		Pessoa p2 = new Pessoa();
+		p1.nome = "José";
+		p1.cpf = "12345678910";
+		p1.endereco = "Rua YYY";
+				
+		/* 
 		 * Criando contas
 		 */
+		
 		Conta c1 = new Conta();		
 		c1.numero = 12345;
-		c1.dono = "Maria";
+		c1.pessoa = p1;
 		c1.saldo = 300.00;
 			
 		Conta c2 = new Conta();
 		c2.numero = 54321;
-		c2.dono = "João";
+		c2.pessoa = p2;
 		c2.saldo = 300.00;
 		
 		/*Declarando o HashMap*/
@@ -83,7 +97,7 @@ class Programa{
 					
 					else if(escolha==5){
 						System.out.println("Número da conta: " + conta.numero);
-						System.out.println("Titular da conta: " + conta.dono);
+						System.out.println("Titular da conta: " + conta.pessoa.nome);
 						System.out.println("Saldo: " + conta.saldo);
 						System.out.println("---------------------");
 						}
