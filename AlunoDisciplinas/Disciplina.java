@@ -4,6 +4,12 @@ class Disciplina{
     String nome;
     boolean concluida=false;
     
+    public Disciplina(int creditosD, int codigoD, String nomeD){
+		this.creditos = creditosD;
+		this.codigo = codigoD;
+		this.nome = nomeD;
+		}
+    
     public String toString(){
         String con=(this.concluida) ? "Disciplina Concluída." : "Em andamento";
         
