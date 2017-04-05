@@ -4,6 +4,11 @@ class Aluno{
     Disciplina[] disciplinas = new Disciplina[4];
     int qtdD=0;
     
+    public Aluno(int matriculaA, String nomeA){
+		this.nome = nomeA;
+		this.matricula = matriculaA;
+		}
+    
     public void matricular(Disciplina d){
         this.disciplinas[this.qtdD]=d;
         this.qtdD++;
