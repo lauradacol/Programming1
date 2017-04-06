@@ -1,7 +1,6 @@
 import java.util.Scanner;
 import java.util.HashMap;
 
-
 class Programa{
 	public static void main(String[] args){
 		
