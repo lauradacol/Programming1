@@ -1,12 +1,12 @@
 class Medicamento{
 	String nome;
 	double precoVenda;
-	String dataValidade;
-	Laboratorio laboratorio = new Laboratorio;
+	Data dataValidade;
+	Laboratorio laboratorio;
 	boolean receitaObrigatoria;
 	int qtdEstoque;
 	
-	public Medicamento(String nome, double precoVenda, String dataValidade, Laboratorio laboratorio, boolean receitaObrigatoria, int qtdEstoque){
+	public Medicamento(String nome, double precoVenda, Data dataValidade, Laboratorio laboratorio, boolean receitaObrigatoria, int qtdEstoque){
 		this.nome = nome;
 		this.precoVenda = precoVenda;
 		this.dataValidade = dataValidade;
@@ -16,7 +16,7 @@ class Medicamento{
 	}
 
     public String toString(){
-        return "\nNome: " + this.nome + "\nPreço: " + this.precoVenda + "\nValidade: " + this.dataValidade + "\nLaboratório: " + this.laboratorio + "\nReceita: " + this.receitaObrigatoria + "\nQuantidade em estoque: " + this.qtdEstoque;
+        return "\nNome: " + this.nome + "\nPreço: " + this.precoVenda + "\nValidade: " + this.dataValidade.toString() + "\nLaboratório: " + this.laboratorio.nomeFantasia + "\nReceita: " + this.receitaObrigatoria + "\nQuantidade em estoque: " + this.qtdEstoque;
     }
   
 	public void vender(int quantidade){
@@ -31,7 +31,7 @@ class Medicamento{
 		}	
 			
 	public void reajustarPrecoVenda(double percentual){
-		this.precoVenda = precoVenda * percentual;
+		this.precoVenda = precoVenda + (precoVenda * percentual);
 		}
 	
 	public void mostra(){
