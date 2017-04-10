@@ -20,10 +20,18 @@ class Medicamento{
     }
   
 	public void vender(int quantidade){
-		if (this.receitaObrigatoria == true){
-			System.out.println("ESTE MEDICAMENTO EXIJE RECEITA!!!");			
+		if(this.qtdEstoque < quantidade){
+			System.out.println("Estoque insuficiente\nQuantidade em estoque: " + this.qtdEstoque + "\n" );
 			}
-		this.qtdEstoque -= quantidade;					
+
+		else{
+			if(this.receitaObrigatoria == true){
+				System.out.println("ESTE MEDICAMENTO EXIJE RECEITA!!!");			
+				}
+
+			this.qtdEstoque -= quantidade;	
+			}
+				
 		} 
 	
 	public void comprar(int quantidade){
@@ -31,7 +39,7 @@ class Medicamento{
 		}	
 			
 	public void reajustarPrecoVenda(double percentual){
-		this.precoVenda = precoVenda + (precoVenda * percentual);
+		this.precoVenda = precoVenda + (precoVenda * (percentual/100));
 		}
 	
 	public void mostra(){
