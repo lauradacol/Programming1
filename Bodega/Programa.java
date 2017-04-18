@@ -19,6 +19,9 @@ class Programa{
 		emp.contrata(f2);
 		emp.contrata(f3);
 		
+		Bebida b1 = new Bebida("Vodka", 30, 100, 120, 50);
+		Bebida b2 = new Bebida("Cerveja", 8, 100, 20, 50);
+		
 		
 		/*Menu Inicial*/
 		int escolha1=0;
@@ -45,7 +48,7 @@ class Programa{
 					escolha2 = entrada.nextInt();
 					
 					if(escolha2==1){
-						emp.contrata(emp.cadastraFunc());
+						emp.contrata(FuncFactory.cadastraFunc());
 						}
 					
 					if(escolha2==2){
@@ -53,13 +56,17 @@ class Programa{
 						entrada.nextLine();
 						String idFunc = entrada.nextLine();
 						
+						/*
+						Optional<Funcionario> f5 = em.encontraFunc(idFunc).get()									
+						emp.demiteFunc(f5);
+						*/
+						
 						if(emp.demiteFunc(idFunc)){
 							System.out.println("Funcionário demitido com sucesso");
 						}
 						else{
 							System.out.println("Funcionário não localizado");
 							}
-						
 					}
 					
 					if(escolha2==3){
@@ -70,28 +77,34 @@ class Programa{
 						System.out.println("Digite o id do funcionário: ");
 						entrada.nextLine();
 						String idFunc = entrada.nextLine();
-						
-						
+												
 						Optional<Funcionario> f4 = emp.encontraFunc(idFunc);
 						Optional<String> s = f4.map(x -> x.toString());
 						String r = s.orElse("Funcionário não localizado");
-						//String r = s.get();
 						System.out.println(r);
-						
-						//if(f4.isPresent()){
-						//	System.out.println(f4.get());
-						//	}
-						//else{
-						//	System.out.println("Funcionário não localizado");
-						//	}
 					}
 					
-					}while(escolha2<5);
-			
-				}
+				}while(escolha2<5);
+			}
 				
 			else if(escolha1==2){
-				System.out.println("\t\t\tBEM VINDO AO MENU DE PRODUTOS");
+			
+				int escolha3 = 0;
+				do{
+					System.out.println("\t\t\tBEM VINDO AO MENU DE PRODUTOS");
+					System.out.println("Digite 1 para cadastrar nova bebida");
+					System.out.println("Digite 2 para vender");
+					System.out.println("Digite 3 para comprar");
+					System.out.println("Digite 4 para visualizar dados de todas as bebidas cadastradas");
+					System.out.println("Digite 5 para visualizar dados de uma bebida");
+					System.out.println("Digite 6 para sair");	
+
+					if(escolha3==1){
+						BebidaFactory.cadastraBebida(emp);
+						System.out.println(emp.bebidas);
+						}
+					
+					}while(escolha3>6);
 				}
 			
 			else if(escolha1==3){

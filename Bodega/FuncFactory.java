@@ -3,7 +3,7 @@ import java.util.Scanner;
 
 class FuncFactory{
 
-	public Funcionario cadastraFunc(){
+	public static Funcionario cadastraFunc(){
 		/*Criando o objeto entrada*/
 		Scanner entrada = new Scanner(System.in);
 
