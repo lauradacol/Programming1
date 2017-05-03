@@ -24,16 +24,10 @@ public class Programa{
 		 * Criando contas
 		 */
 		
-		Conta c1 = new Conta();		
-		c1.numero = 12345;
-		c1.pessoa = p1;
-		c1.saldo = 300.00;
+		ContaCorrente c1 = new ContaCorrente(12345, p1, 300.00);		
 			
-		Conta c2 = new Conta();
-		c2.numero = 54321;
-		c2.pessoa = p2;
-		c2.saldo = 300.00;
-		
+		ContaPoupanca c2 = new ContaPoupanca(54321, p2, 300.00);
+						
 		/*Declarando o HashMap*/
 		HashMap<Integer, Conta> hmap = new HashMap<Integer, Conta>();
 		

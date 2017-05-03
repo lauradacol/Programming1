@@ -20,8 +20,8 @@ public abstract class Conta{
 		System.out.println("Saldo: " + this.saldo);
 		}
 	
-	/*Função que recebe um valor para sacar, verifica se ele é válido (maior que zero), 
-	 * ou se há saldo suficiente
+	/*Função que recebe um valor para sacar, verifica se ele é válido 
+	 * (maior que zero), ou se há saldo suficiente
 	 */	
 	public boolean verificaSaldo(double valorSaque){
 		boolean verificadorSaldo = true;
@@ -39,14 +39,20 @@ public abstract class Conta{
 		return verificadorSaldo;		
 	}
 	
+	/*Método Taxa de Serviço. É abstrato para que as classes filhsa
+	 * herdem a responsabilidade de tornar este método concreto
+	 */
+	 public abstract void taxaSaque(double valorSaque);
+	
 	/*Realiza o saque se a função verificaSaldo retornar True*/
 	public boolean sacar(double valorSaque){
 		boolean verificadorSaque = verificaSaldo(valorSaque);
 		
 		if(verificadorSaque){
 			this.saldo-=valorSaque;
+			taxaSaque(valorSaque);
 			printOperacao();
-			consultaSaldo();
+//			consultaSaldo();
 		}
 		
 		return verificadorSaque;
@@ -58,12 +64,18 @@ public abstract class Conta{
 		consultaSaldo();
 		}
 	
-	/*Recebe uma conta e um double*/
+	/*Recebe uma conta e um double. Se a função sacar retornar 
+	 * verdadeiro (ou seja, se o saque desta conta ocorrer) a função
+	 * realiza a transferência, depositando o valor sacado na conta destino*/
 	public void transferencia(Conta contaDestino, double valorTransferencia){
 		boolean verificadorTransf = sacar(valorTransferencia);
 		if (verificadorTransf){
-			contaDestino.saldo+=valorTransferencia;
+			contaDestino.deposito(valorTransferencia);
 			printOperacao();
+			
+			/*Implementa a taxa de transferência*/
+			this.saldo -=4;
 			}
 		}
+		
 	}
