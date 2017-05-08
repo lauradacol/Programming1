@@ -16,7 +16,7 @@ public class Pessoa{
 	
 	/**
 	 * toString.
-	 * @return Informações da conta concatenadas como uma string.
+	 * @return Informações da pessoa concatenadas como uma string.
 	 */	
 	public String toString(){
 		return "Nome do Titular: " + this.nome + "\nCPF: " + this.cpf + "\nEndereço: " + this.endereco + "\n";
