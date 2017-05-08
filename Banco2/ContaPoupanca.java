@@ -1,10 +1,9 @@
 public class ContaPoupanca extends Conta{
 	
 	/**
-	 * Método construtor para Conta Poupança
-	 * @param numero Inteiro com o número da Conta Corrente a ser cadastrada.
-	 * @param pessoa Pessoa (objeto) dona desta conta.
-	 * @param saldo Double com o saldo inicial da conta
+	 * @param numero número da Conta Poupança.
+	 * @param pessoa titular da Conta Poupança.
+	 * @param saldo saldo inicial da Conta Poupança.
 	 */
 	public ContaPoupanca(int numero, Pessoa pessoa, double saldo){
 		/*Importa os atributos da superclasse*/
@@ -12,36 +11,61 @@ public class ContaPoupanca extends Conta{
 	}
 
 	/**
-	 * Método Taxa Saque
-	 * Método para incluir a taxa de serviço no saque. É um método abstrato
-	 * na classe pai.
-	 * @param valorSaque Double com o valor a ser sacado que se for maior
-	 * que 800 descontara mais 5 do saldo do usuário (taxa de saque para
-	 * Conta Poupança para saques maior que 800 reais).
+	 * Inclui a taxa de serviço no saque. É um método abstrato na classe 
+	 * pai.
+	 * @param valorSaque valor a ser sacado que se for maior que 800 
+	 * descontará mais 5 do saldo do usuário (taxa de saque para Conta 
+	 * Poupança para saques maior que 800 reais).
 	 */
 	public void taxaSaque(double valorSaque){
+		if(saldo==0){
+			System.out.println("Saldo insuficiente para aplicação de taxa de saque!\n");
+			}		
 		if(valorSaque>800){
 			this.saldo-=5;
 		}
 	}	
 	
 	/**
-	 * Método Atualiza
-	 * Método que recebe um percentual e atualiza o saldo (rendimento
-	 * da conta poupança);
-	 * @param percentual Double com o percentual a ser acrecido. Se houve
-	 * um aumento de 5%, deve-se passar 5 como parâmetro.
+	 * Verifica se há saldo e se o valor é negativo. Se ambos forem true,
+	 * realiza o saque, aplicando as taxas pertinentes. Se não e se há 
+	 * limite disponível, chama a função sacarLimite.
+	 * @param valorSaque valor que o usuário deseja sacar.
+	 * @return true se o saque foi realizado e false se não.
+	 * */
+	public boolean sacar(double valorSaque){
+		boolean verificadorSaldo = verificaSaldo(valorSaque);
+		boolean verificadorNegativo = verificaNegativo(valorSaque);
+		boolean verificadorSaque = verificadorSaldo && verificadorNegativo;
+		
+		if(verificadorSaque){
+			this.saldo-=valorSaque;
+			taxaSaque(valorSaque);
+			printOperacao();
+		}
+		
+		return verificadorSaque;
+	}		
+	
+	/**
+	 * Recebe um percentual e atualiza o saldo (rendimento da conta poupança);
+	 * @param percentual a ser acrecido. Se houve um aumento de 5%, 
+	 * deve-se passar 5 como parâmetro.
 	 */
 	public void atualiza(double percentual){
 		this.saldo = this.saldo + (this.saldo*percentual/100);
 		}
+
+	public boolean taxaTransf(double valorSaque){
+		return true;		
+		}	
 	
 	/**
 	 * Método toString.
-	 * @return As informações da conta concatenadas como uma string.
+	 * @return informações da conta concatenadas como uma string.
 	 * */		
 	public String toString(){
-	return "CONTA POUPANÇA\n" + super.toString + "\n";
+	return "CONTA POUPANÇA\n" + super.toString() + "\n";
 	}
 }
 
