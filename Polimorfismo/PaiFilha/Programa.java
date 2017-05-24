@@ -6,10 +6,10 @@ class Programa{
 		p.m1();
 		p.m2();
 		
-		Filha f = (Filha) p;
-		p.m1();
-		p.m2();
-		p.m3();
+		Filha f = (Filha)p;
+		f.m1();
+		f.m2();
+		f.m3();
 		
 		}
 		
