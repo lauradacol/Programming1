@@ -1,0 +1,17 @@
+import java.util.Scanner;
+
+public abstract class Empregado{
+	
+	public double definirSalario(){
+		double salario = 0.0;
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Entre com o valor do salário: ");
+		salario = scan.nextDouble();
+		
+		return salario;
+		}
+		
+	public abstract double definirBeneficios(double total);
+	
+}
