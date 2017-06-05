@@ -6,12 +6,12 @@ class ProductReview extends Post implements Evaluable{
 	
 	public ProductReview(String title, String content){
 		super(title, content);		
-		Date date = new Date();
+		Date date = new Date();	
 		}	
 	
 	public void show(){
 		System.out.println(super.title.toUpperCase());
-		System.out.println("Publicado em: " + super.date);
+		System.out.println("Publicado em: " + super.date.toGMTString());
 		System.out.println(super.content);
 		System.out.println("Stars: " + this.stars);
 		System.out.println("Likes: " + super.likes);
