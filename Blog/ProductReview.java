@@ -3,9 +3,13 @@ import java.io.*;
 
 class ProductReview extends Post implements Evaluable{
 	int stars;
+	String brand;
 	
-	public ProductReview(String title, String content){
-		super(title, content);		
+	public ProductReview(){}
+	
+	public ProductReview(String title, String content, String brand){
+		super(title, content);
+		this.brand = brand;		
 		Date date = new Date();	
 		}	
 	
@@ -31,5 +35,6 @@ class ProductReview extends Post implements Evaluable{
 	public void evaluate(int stars){
 		this.stars = stars;
 		}
-	
+		
+
 	}

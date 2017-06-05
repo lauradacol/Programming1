@@ -9,6 +9,8 @@ class Post{
 	int dislikes;
 	Date date = new Date();	
 	
+	public Post(){}
+	
 	public Post(String title, String content){
 		this.title = title;
 		this.content = content;
@@ -26,8 +28,8 @@ class Post{
 		this.likes += 1;
 		}
 	
-	public void dislikes(){
+	public void dislike(){
 		this.dislikes += 1;
 		}
-	
+		
 	}

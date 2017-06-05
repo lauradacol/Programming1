@@ -4,6 +4,8 @@ import java.io.*;
 class News extends Post{
 	String source;
 	
+	public News(){}
+	
 	public News(String title, String content, String source){
 		super(title, content);
 		this.source = source;
@@ -17,5 +19,6 @@ class News extends Post{
 		System.out.println("Likes: " + super.likes);
 		System.out.println("Dislikes: " + super.dislikes);		
 		}
+		
 
 	}
