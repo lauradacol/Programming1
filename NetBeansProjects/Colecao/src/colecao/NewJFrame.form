@@ -24,52 +24,127 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="btPrintFam" min="-2" max="-2" attributes="0"/>
-                  <Component id="btAddFam" max="32767" attributes="0"/>
+              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                  <Component id="btAddGen" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btAddFam" alignment="0" max="32767" attributes="0"/>
+                  <Component id="btAddEsp" max="32767" attributes="0"/>
+                  <Component id="btAddLoc" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btAddCol" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btAddInd" alignment="1" max="32767" attributes="0"/>
+                  <Component id="btVerInd" alignment="1" max="32767" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="desktopPane" min="-2" pref="592" max="-2" attributes="0"/>
+              <Component id="desktopPane" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="695" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+          <Group type="102" attributes="0">
+              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="desktopPane" alignment="0" min="-2" pref="373" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="btAddFam" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                      <Component id="btPrintFam" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btAddGen" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btAddEsp" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btAddLoc" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btAddCol" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btAddInd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btVerInd" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="323" max="32767" attributes="0"/>
                   </Group>
+                  <Component id="desktopPane" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="58" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JButton" name="btAddGen">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="G&#xea;nero"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAddGenActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JDesktopPane" name="desktopPane">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="12" green="91" red="4e" type="rgb"/>
+        </Property>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="btAddFam">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Adicionar Fam&#xed;lia"/>
+        <Property name="text" type="java.lang.String" value="Fam&#xed;lia"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAddFamActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="btPrintFam">
+    <Component class="javax.swing.JButton" name="btAddEsp">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Ver Fam&#xed;lias Cadastradas"/>
+        <Property name="text" type="java.lang.String" value="Esp&#xe9;cie"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btPrintFamActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAddEspActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JDesktopPane" name="desktopPane">
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Baloo Thambi" size="24" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="Sistema de Gerenciamento de Colecao Biol&#xf3;gica"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="btAddLoc">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Localidade"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAddLocActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btAddCol">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Coletor"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAddColActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btAddInd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tombar Indiv&#xed;duo"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btAddIndActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="btVerInd">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Ver Indiv&#xed;duos Tombados"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btVerIndActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

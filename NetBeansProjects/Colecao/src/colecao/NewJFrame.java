@@ -22,23 +22,69 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btAddFam = new javax.swing.JButton();
-        btPrintFam = new javax.swing.JButton();
+        btAddGen = new javax.swing.JButton();
         desktopPane = new javax.swing.JDesktopPane();
+        btAddFam = new javax.swing.JButton();
+        btAddEsp = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        btAddLoc = new javax.swing.JButton();
+        btAddCol = new javax.swing.JButton();
+        btAddInd = new javax.swing.JButton();
+        btVerInd = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        btAddFam.setText("Adicionar Família");
+        btAddGen.setText("Gênero");
+        btAddGen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddGenActionPerformed(evt);
+            }
+        });
+
+        desktopPane.setBackground(new java.awt.Color(78, 145, 18));
+
+        btAddFam.setText("Família");
         btAddFam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btAddFamActionPerformed(evt);
             }
         });
 
-        btPrintFam.setText("Ver Famílias Cadastradas");
-        btPrintFam.addActionListener(new java.awt.event.ActionListener() {
+        btAddEsp.setText("Espécie");
+        btAddEsp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btPrintFamActionPerformed(evt);
+                btAddEspActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Baloo Thambi", 1, 24)); // NOI18N
+        jLabel1.setText("Sistema de Gerenciamento de Colecao Biológica");
+
+        btAddLoc.setText("Localidade");
+        btAddLoc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddLocActionPerformed(evt);
+            }
+        });
+
+        btAddCol.setText("Coletor");
+        btAddCol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddColActionPerformed(evt);
+            }
+        });
+
+        btAddInd.setText("Tombar Indivíduo");
+        btAddInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAddIndActionPerformed(evt);
+            }
+        });
+
+        btVerInd.setText("Ver Indivíduos Tombados");
+        btVerInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btVerIndActionPerformed(evt);
             }
         });
 
@@ -47,38 +93,78 @@ public class NewJFrame extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btPrintFam)
-                    .addComponent(btAddFam, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(btAddGen, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAddFam, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAddEsp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAddLoc, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAddCol, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btAddInd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btVerInd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 592, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(desktopPane)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(151, 151, 151)
+                .addComponent(jLabel1)
+                .addContainerGap(695, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(47, 47, 47)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(desktopPane, javax.swing.GroupLayout.PREFERRED_SIZE, 373, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(btAddFam)
-                        .addGap(14, 14, 14)
-                        .addComponent(btPrintFam)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btAddGen)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btAddEsp)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btAddLoc)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btAddCol)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btAddInd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btVerInd)
+                        .addGap(0, 323, Short.MAX_VALUE))
+                    .addComponent(desktopPane))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btAddGenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddGenActionPerformed
+        criaAddGenFrame();
+    }//GEN-LAST:event_btAddGenActionPerformed
+
     private void btAddFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddFamActionPerformed
         criaAddFamFrame();
     }//GEN-LAST:event_btAddFamActionPerformed
 
-    private void btPrintFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btPrintFamActionPerformed
-       criaPrintFamFrame();
-        
-    }//GEN-LAST:event_btPrintFamActionPerformed
+    private void btAddEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddEspActionPerformed
+        criaAddEspFrame();
+    }//GEN-LAST:event_btAddEspActionPerformed
+
+    private void btAddLocActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddLocActionPerformed
+        criaAddLocFrame();
+    }//GEN-LAST:event_btAddLocActionPerformed
+
+    private void btAddColActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddColActionPerformed
+        criaAddColFrame();
+    }//GEN-LAST:event_btAddColActionPerformed
+
+    private void btAddIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddIndActionPerformed
+        criaAddIndFrame();
+    }//GEN-LAST:event_btAddIndActionPerformed
+
+    private void btVerIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btVerIndActionPerformed
+        criaVerIndFrame();
+    }//GEN-LAST:event_btVerIndActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,33 +202,88 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btAddCol;
+    private javax.swing.JButton btAddEsp;
     private javax.swing.JButton btAddFam;
-    private javax.swing.JButton btPrintFam;
+    private javax.swing.JButton btAddGen;
+    private javax.swing.JButton btAddInd;
+    private javax.swing.JButton btAddLoc;
+    private javax.swing.JButton btVerInd;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 
    //Declarando os InternalFrames
    AddFamFrame addFamFrame;
-   PrintFamFrame printFamFrame;
+   AddGenFrame addGenFrame;
+   AddEspFrame addEspFrame;
+   AddLocFrame addLocFrame;
+   AddColFrame addColFrame;
+   AddIndFrame addIndFrame;
+   VerIndFrame verIndFrame;
    
    //Metodo que cria e abre minha janela de adicionar familia
    private void criaAddFamFrame() {
-      if(addFamFrame == null){
-         addFamFrame = new AddFamFrame(); 
-      }
-      
-      desktopPane.add(addFamFrame);
-      addFamFrame.setVisible(true);
+        if(addFamFrame == null){
+           addFamFrame = new AddFamFrame(); 
+        }
+
+        desktopPane.add(addFamFrame);
+        addFamFrame.setVisible(true);
    }
   
-   private void criaPrintFamFrame() {
-    if(printFamFrame == null){
-         printFamFrame = new PrintFamFrame(); 
-      }
-      
-      desktopPane.add(printFamFrame);
-      printFamFrame.setVisible(true);
+   private void criaAddGenFrame() {
+        if(addGenFrame == null){
+           addGenFrame = new AddGenFrame(); 
+        }
+
+        desktopPane.add(addGenFrame);
+        addGenFrame.setVisible(true);
    }
+
+   private void criaAddEspFrame() {
+        if(addEspFrame == null){
+           addEspFrame = new AddEspFrame(); 
+        }
+
+        desktopPane.add(addEspFrame);
+        addEspFrame.setVisible(true);
+   }      
    
+    private void criaAddLocFrame() {
+        if(addLocFrame == null){
+           addLocFrame = new AddLocFrame(); 
+        }
+
+        desktopPane.add(addLocFrame);
+       addLocFrame.setVisible(true);
+    }   
    
+    private void criaAddColFrame() {
+        if(addColFrame == null){
+           addColFrame = new AddColFrame(); 
+        }
+
+        desktopPane.add(addColFrame);
+       addColFrame.setVisible(true);
+    }     
+
+    private void criaAddIndFrame() {
+        if(addIndFrame == null){
+           addIndFrame = new AddIndFrame(); 
+        }
+
+        desktopPane.add(addIndFrame);
+       addIndFrame.setVisible(true);
+    }      
+
+    private void criaVerIndFrame() {
+        if(verIndFrame == null){
+           verIndFrame = new VerIndFrame(); 
+        }
+
+        desktopPane.add(verIndFrame);
+       verIndFrame.setVisible(true);
+    }         
+    
 }

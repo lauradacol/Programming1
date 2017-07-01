@@ -25,7 +25,7 @@ public class Familia{
 	}
 		
 	public String toString(){
-		return "Nome: " + this.nome;
+		return this.nome;
 	}
 		
 }

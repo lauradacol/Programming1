@@ -17,24 +17,40 @@ public class FamiliaFactory {
 	ArrayList<Familia> familias;
 	
 	private FamiliaFactory(){
-		familias = new ArrayList<Familia>();
+            familias = new ArrayList<Familia>();
 	}
 	
 	public static FamiliaFactory getInstance(){
-		if(f==null){
-			f= new FamiliaFactory();			
-		}
-		return f;
+            if(f==null){
+                    f= new FamiliaFactory();			
+            }
+            return f;
 	}	
 
 	public void cadastrarFamilia(String nome){
-		//System.out.println("Nome da Família: ");
+            //System.out.println("Nome da Família: ");
 		
-		Familia f1 = new Familia(nome);
-		familias.add(f1);
+            Familia f1 = new Familia(nome);
+            familias.add(f1);
 	}
 	
 	public ArrayList<Familia> findAll(){
-		return familias;		
+            return familias;		
 	}
+        
+        public Familia findFam(String nome){
+            Familia f1 = null;
+            for(Familia f : familias){ 
+                if(f.getNome().equals(nome)){
+                    f1 = f;
+                }
+            }
+            
+            if(f1 == null){
+                f1 = new Familia(nome);
+                familias.add(f1);                
+            }
+            
+            return f1;            
+        }
 }

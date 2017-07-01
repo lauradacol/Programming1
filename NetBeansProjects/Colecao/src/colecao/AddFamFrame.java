@@ -38,12 +38,18 @@ public class AddFamFrame extends javax.swing.JInternalFrame {
         btBackFam = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabFam = new javax.swing.JTable();
+        btShowFam = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Adicionar Família"));
 
         jLabel2.setText("Nome da Família:");
 
         btClearFam.setText("Limpar");
+        btClearFam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btClearFamActionPerformed(evt);
+            }
+        });
 
         btClearFam2.setText("Add");
         btClearFam2.addActionListener(new java.awt.event.ActionListener() {
@@ -112,6 +118,13 @@ public class AddFamFrame extends javax.swing.JInternalFrame {
         ));
         jScrollPane1.setViewportView(tabFam);
 
+        btShowFam.setText("Ver Famílias Cadastradas");
+        btShowFam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btShowFamActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -120,12 +133,14 @@ public class AddFamFrame extends javax.swing.JInternalFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btBackFam, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btShowFam)
+                            .addComponent(btBackFam, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(44, 44, 44))
         );
         layout.setVerticalGroup(
@@ -133,9 +148,13 @@ public class AddFamFrame extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 72, Short.MAX_VALUE))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btShowFam)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btBackFam)
                 .addContainerGap())
         );
@@ -148,13 +167,20 @@ public class AddFamFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btBackFamActionPerformed
 
     private void btClearFam2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearFam2ActionPerformed
-       
        String nome = addFamTextField.getText();
               
        FamiliaFactory.getInstance().cadastrarFamilia(nome);
        initFamTable();
        addFamTextField.setText("");       
     }//GEN-LAST:event_btClearFam2ActionPerformed
+
+    private void btClearFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearFamActionPerformed
+        addFamTextField.setText("");
+    }//GEN-LAST:event_btClearFamActionPerformed
+
+    private void btShowFamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btShowFamActionPerformed
+        initFamTable();
+    }//GEN-LAST:event_btShowFamActionPerformed
 
     private void initFamTable(){
         DefaultTableModel m = (DefaultTableModel) tabFam.getModel();
@@ -169,6 +195,7 @@ public class AddFamFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btBackFam;
     private javax.swing.JButton btClearFam;
     private javax.swing.JButton btClearFam2;
+    private javax.swing.JButton btShowFam;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
