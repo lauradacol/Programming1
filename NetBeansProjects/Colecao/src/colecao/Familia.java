@@ -9,14 +9,20 @@ package colecao;
  *
  * @author laura
  */
+
+import java.util.ArrayList;
+
 public class Familia{
 	private String nome;
+        ArrayList<Genero> generos;
+        
 		
 	public Familia(String nome){
 		this.nome = nome;
+                generos = new ArrayList<Genero>();
 	}
 	
-	public void setNome(String nomeNovo){
+        public void setNome(String nomeNovo){
 		this.nome = nomeNovo;
 	}
 	

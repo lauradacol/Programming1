@@ -434,7 +434,7 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
         Coletor coletor = ColetorFactory.getInstance().findCol(nome,telefone,email);
         Localidade localidade = LocalidadeFactory.getInstance().findLoc(uf,municipio,localidade1);
 
-        IndividuoFactory.getInstance().cadastrarIndividuo(especie, tombo, coletor, localidade, data, recipiente, obs);
+        Individuo i = IndividuoFactory.getInstance().cadastrarIndividuo(especie, tombo, coletor, localidade, data, recipiente, obs);
 
         addTOMBOTextField1.setText("");
         addNomeTextField.setText("");
@@ -544,7 +544,7 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
     private javax.swing.JPanel jPanel5;
     // End of variables declaration//GEN-END:variables
 
-    
+    //IndividuoFactory.getInstance().cadastrarIndividuo(especie, tombo, coletor, localidade, data, recipiente, obs)
       
    
 }

@@ -43,6 +43,7 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
         tabEsp = new javax.swing.JTable();
         btBackEsp = new javax.swing.JButton();
         btShowEsp = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Adicionar Espécie"));
 
@@ -151,6 +152,13 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        btDelete.setText("Deletar");
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,11 +169,14 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 166, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btBackEsp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btShowEsp, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(0, 238, Short.MAX_VALUE)
+                        .addComponent(btBackEsp, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btShowEsp)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -175,7 +186,9 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3)
-                .addComponent(btShowEsp)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btShowEsp)
+                    .addComponent(btDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btBackEsp)
                 .addContainerGap())
@@ -187,6 +200,7 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
     private void btClearEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearEspActionPerformed
         addFamTextField.setText("");
         addGenTextField.setText("");
+        addEspTextField.setText("");
     }//GEN-LAST:event_btClearEspActionPerformed
 
     private void btAddEspActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddEspActionPerformed
@@ -195,7 +209,7 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
         String nomeEsp = addEspTextField.getText();
         
         Genero genero = GeneroFactory.getInstance().findGen(nomeFam, nomeGen);
-        EspecieFactory.getInstance().cadastrarEspecie(genero, nomeEsp);
+        Especie e = EspecieFactory.getInstance().cadastrarEspecie(genero, nomeEsp);
         
         initEspTable();
         addFamTextField.setText("");
@@ -223,6 +237,32 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addFamTextFieldActionPerformed
 
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+       int row = tabEsp.getSelectedRow();
+       int columnFam = 0;
+       int columnGen = 1; 
+       int columnEsp = 2;
+       
+       Object f = tabEsp.getValueAt(row, columnFam);
+       Object g = tabEsp.getValueAt(row, columnGen);
+       Object e = tabEsp.getValueAt(row, columnEsp);
+
+       String familia = f.toString();       
+       String genero = g.toString();       
+       String especie = e.toString(); 
+       
+       Especie eRemove = EspecieFactory.getInstance().findEsp(familia,genero,especie);
+       
+       if((EspecieFactory.getInstance().deleteEsp(eRemove))==true){
+            initEspTable();
+       }
+       
+       else{
+           ImpossivelDeletar frame = new ImpossivelDeletar();
+           frame.setVisible(true);
+       }
+    }//GEN-LAST:event_btDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addEspTextField;
@@ -231,6 +271,7 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btAddEsp;
     private javax.swing.JButton btBackEsp;
     private javax.swing.JButton btClearEsp;
+    private javax.swing.JButton btDelete;
     private javax.swing.JButton btShowEsp;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

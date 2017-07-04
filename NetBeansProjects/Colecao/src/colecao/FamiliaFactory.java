@@ -27,11 +27,13 @@ public class FamiliaFactory {
             return f;
 	}	
 
-	public void cadastrarFamilia(String nome){
+	public Familia cadastrarFamilia(String nome){
             //System.out.println("Nome da Família: ");
 		
             Familia f1 = new Familia(nome);
             familias.add(f1);
+            
+            return f1;
 	}
 	
 	public ArrayList<Familia> findAll(){
@@ -47,10 +49,22 @@ public class FamiliaFactory {
             }
             
             if(f1 == null){
-                f1 = new Familia(nome);
-                familias.add(f1);                
+                f1 = cadastrarFamilia(nome);                
             }
             
             return f1;            
         }
+        
+        public boolean deleteFam(Familia f){
+            if(f.generos.size() == 0){
+                familias.remove(f);
+                return true;
+            }
+            
+            else{                                
+                return false;
+            }                    
+        }
+        
+
 }

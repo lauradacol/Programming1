@@ -27,11 +27,13 @@ public class ColetorFactory {
 		return c;
 	}	
 
-	public void cadastrarColetor(String nome, String telefone, String email){
+	public Coletor cadastrarColetor(String nome, String telefone, String email){
 		//System.out.println("Nome da Família: ");
 		
 		Coletor c1 = new Coletor(nome, telefone, email);
                 coletores.add(c1);
+                
+                return c1;
                 
         }
 	
@@ -48,10 +50,21 @@ public class ColetorFactory {
             }
             
             if(c1 == null){
-                c1 = new Coletor(nome,telefone,email);
-                coletores.add(c1);                
+                c1 = cadastrarColetor(nome,telefone,email);               
             }
             
             return c1;            
         }
+
+        public boolean deleteCol(Coletor c){
+            if(c.individuos.size() == 0){
+                coletores.remove(c);
+                return true;
+            }
+            
+            else{                                
+                return false;
+            }                    
+        }        
+        
 }

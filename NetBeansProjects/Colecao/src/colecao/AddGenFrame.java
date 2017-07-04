@@ -41,6 +41,7 @@ public class AddGenFrame extends javax.swing.JInternalFrame {
         tabGen = new javax.swing.JTable();
         btBackGen = new javax.swing.JButton();
         btShowGen = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Adicionar Gênero"));
 
@@ -137,6 +138,13 @@ public class AddGenFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        btDelete.setText("Deletar");
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,10 +156,13 @@ public class AddGenFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 135, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btBackGen, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btShowGen, javax.swing.GroupLayout.Alignment.TRAILING))))
+                        .addGap(0, 206, Short.MAX_VALUE)
+                        .addComponent(btBackGen, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btShowGen)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -161,11 +172,13 @@ public class AddGenFrame extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 124, Short.MAX_VALUE))
+                        .addGap(0, 127, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btShowGen)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btShowGen)
+                            .addComponent(btDelete))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btBackGen)))
                 .addContainerGap())
@@ -183,7 +196,7 @@ public class AddGenFrame extends javax.swing.JInternalFrame {
         String nomeFam = addFamTextField.getText();
         String nomeGen = addGenTextField.getText();
         Familia familia = FamiliaFactory.getInstance().findFam(nomeFam);
-        GeneroFactory.getInstance().cadastrarGenero(familia, nomeGen);
+        Genero g = GeneroFactory.getInstance().cadastrarGenero(familia, nomeGen);
 
         initGenTable();
         addFamTextField.setText("");
@@ -197,6 +210,31 @@ public class AddGenFrame extends javax.swing.JInternalFrame {
     private void btShowGenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btShowGenActionPerformed
         initGenTable();
     }//GEN-LAST:event_btShowGenActionPerformed
+
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+       int row = tabGen.getSelectedRow();
+       int columnFam = 0;
+       int columnGen = 1; 
+       
+       Object f = tabGen.getValueAt(row, columnFam);
+       Object g = tabGen.getValueAt(row, columnGen);
+
+       String familia = f.toString();       
+       String genero = g.toString();       
+      
+       Genero gRemove = GeneroFactory.getInstance().findGen(familia,genero);
+       
+       if((GeneroFactory.getInstance().deleteGen(gRemove))==true){
+            initGenTable();
+       }
+       
+       else{
+           ImpossivelDeletar frame = new ImpossivelDeletar();
+           frame.setVisible(true);
+       }
+        
+        
+    }//GEN-LAST:event_btDeleteActionPerformed
 
     private void initGenTable(){
         DefaultTableModel m = (DefaultTableModel) tabGen.getModel();
@@ -212,6 +250,7 @@ public class AddGenFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btAddGen;
     private javax.swing.JButton btBackGen;
     private javax.swing.JButton btClearGen;
+    private javax.swing.JButton btDelete;
     private javax.swing.JButton btShowGen;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

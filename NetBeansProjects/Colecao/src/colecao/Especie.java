@@ -9,13 +9,18 @@ package colecao;
  *
  * @author laura
  */
+
+import java.util.ArrayList;
+
 public class Especie{
 	private Genero genero;
         private String nome;
+        ArrayList<Individuo> individuos;
 		
 	public Especie(Genero genero, String nome){
 		this.genero = genero;
                 this.nome = nome;
+                individuos = new ArrayList<Individuo>();   
 	}
 	
 	public void setNome(String nomeNovo){

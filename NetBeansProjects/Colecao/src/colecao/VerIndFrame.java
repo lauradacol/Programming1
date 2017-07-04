@@ -33,6 +33,7 @@ public class VerIndFrame extends javax.swing.JInternalFrame {
         tabInd = new javax.swing.JTable();
         btShowInd = new javax.swing.JButton();
         btBackInd = new javax.swing.JButton();
+        btDelet = new javax.swing.JButton();
 
         jScrollPane1.setBorder(javax.swing.BorderFactory.createTitledBorder("Indivíduos Tombados"));
 
@@ -60,15 +61,25 @@ public class VerIndFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        btDelet.setText("Deletar Indivíduo");
+        btDelet.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeletActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(965, Short.MAX_VALUE)
+                .addContainerGap(778, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btBackInd, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btShowInd))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btDelet)
+                        .addGap(69, 69, 69)
+                        .addComponent(btShowInd)))
                 .addGap(25, 25, 25))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -78,8 +89,10 @@ public class VerIndFrame extends javax.swing.JInternalFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(237, Short.MAX_VALUE)
-                .addComponent(btShowInd)
+                .addContainerGap(240, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btShowInd)
+                    .addComponent(btDelet))
                 .addGap(4, 4, 4)
                 .addComponent(btBackInd)
                 .addContainerGap())
@@ -101,6 +114,19 @@ public class VerIndFrame extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btBackIndActionPerformed
 
+    private void btDeletActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeletActionPerformed
+       int row = tabInd.getSelectedRow();
+       int column = 0;
+        
+       Object t = tabInd.getValueAt(row, column);
+       
+       String tombo = t.toString();
+       Individuo iRemove = IndividuoFactory.getInstance().findInd(tombo);
+       
+       IndividuoFactory.getInstance().individuos.remove(iRemove);
+       initIndTable();        
+    }//GEN-LAST:event_btDeletActionPerformed
+
     private void initIndTable(){
         DefaultTableModel m = (DefaultTableModel) tabInd.getModel();
         m.setRowCount(0);
@@ -112,6 +138,7 @@ public class VerIndFrame extends javax.swing.JInternalFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btBackInd;
+    private javax.swing.JButton btDelet;
     private javax.swing.JButton btShowInd;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabInd;

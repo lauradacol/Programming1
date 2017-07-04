@@ -27,11 +27,13 @@ public class LocalidadeFactory {
 		return l;
 	}	
 
-	public void cadastrarLocalidade(String uf, String municipio, String localidade){
+	public Localidade cadastrarLocalidade(String uf, String municipio, String localidade){
 		//System.out.println("Nome da Família: ");
 		
 		Localidade l1 = new Localidade(uf,municipio,localidade);
                 localidades.add(l1);
+                
+                return l1;
                 
         }
 	
@@ -48,11 +50,22 @@ public class LocalidadeFactory {
             }
             
             if(l1 == null){
-                l1 = new Localidade(uf,municipio,localidade);
-               localidades.add(l1);                
+                l1 = cadastrarLocalidade(uf,municipio,localidade);                
             }
             
             return l1;            
-        }   
+        }
+
+        public boolean deleteLoc(Localidade l){
+            if(l.individuos.size() == 0){
+                localidades.remove(l);
+                return true;
+            }
+            
+            else{                                
+                return false;
+            }                    
+        }        
+        
        
 }

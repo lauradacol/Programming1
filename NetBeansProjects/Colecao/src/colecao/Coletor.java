@@ -5,6 +5,8 @@
  */
 package colecao;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author laura
@@ -13,11 +15,13 @@ public class Coletor {
     private String nome;
     private String telefone;
     private String email;
-        
+    ArrayList<Individuo> individuos; 
+    
     public Coletor(String nome, String telefone, String email){
        this.nome = nome;
        this.telefone = telefone;
        this.email = email;
+       individuos = new ArrayList<Individuo>();        
     }
     
     public String getNome() {

@@ -5,19 +5,26 @@
  */
 package colecao;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author laura
  */
+
+import java.util.ArrayList;
+
 public class Localidade {
     private String uf;
     private String municipio;
     private String localidade;
+    ArrayList<Individuo> individuos;    
         
     public Localidade(String uf, String municipio, String localidade){
        this.uf = uf;
        this.municipio = municipio;
-       this.localidade = localidade;
+       this.localidade = localidade;                
+       individuos = new ArrayList<Individuo>(); 
     }
     
     public String getUf() {

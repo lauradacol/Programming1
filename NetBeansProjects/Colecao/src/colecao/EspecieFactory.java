@@ -27,11 +27,14 @@ public class EspecieFactory {
 		return e;
 	}	
 
-	public void cadastrarEspecie(Genero genero, String nome){
+	public Especie cadastrarEspecie(Genero genero, String nome){
 		//System.out.println("Nome da Família: ");
 		
 		Especie e1 = new Especie(genero, nome);
                 especies.add(e1);
+                genero.especies.add(e1);   
+                
+                return e1;
                 
         }
 	
@@ -50,11 +53,22 @@ public class EspecieFactory {
             
             if(e1 == null){
                 Genero genero = GeneroFactory.getInstance().findGen(nomeFam, nomeGen);           
-                e1 = new Especie(genero, especie);
-                especies.add(e1);                
+                e1 = cadastrarEspecie(genero, especie);
+                                
             }
             
             return e1;            
-        }       
+        }
+        
+        public boolean deleteEsp(Especie e){
+            if(e.individuos.size() == 0){
+                especies.remove(e);
+                return true;
+            }
+            
+            else{                                
+                return false;
+            }                    
+        }
         
 }

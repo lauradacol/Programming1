@@ -11,7 +11,6 @@ package colecao;
  */
 public class Individuo{
 
-
     private Especie especie;
     private String tombo;
     private Coletor coletor;

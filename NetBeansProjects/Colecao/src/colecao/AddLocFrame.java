@@ -43,6 +43,7 @@ public class AddLocFrame extends javax.swing.JInternalFrame {
         tabLoc = new javax.swing.JTable();
         btShowLoc = new javax.swing.JButton();
         btBackLoc = new javax.swing.JButton();
+        btDelete = new javax.swing.JButton();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Adicionar Localidade"));
 
@@ -151,6 +152,13 @@ public class AddLocFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        btDelete.setText("Deletar");
+        btDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDeleteActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -161,11 +169,14 @@ public class AddLocFrame extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 266, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btBackLoc, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btShowLoc, javax.swing.GroupLayout.Alignment.TRAILING)))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(0, 356, Short.MAX_VALUE)
+                        .addComponent(btBackLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(btDelete)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btShowLoc)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -175,7 +186,9 @@ public class AddLocFrame extends javax.swing.JInternalFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(3, 3, 3)
-                .addComponent(btShowLoc)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btShowLoc)
+                    .addComponent(btDelete))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btBackLoc)
                 .addContainerGap())
@@ -199,7 +212,7 @@ public class AddLocFrame extends javax.swing.JInternalFrame {
         String municipio = addMunTextField.getText();
         String localidade = addLocTextField.getText();
 
-        LocalidadeFactory.getInstance().cadastrarLocalidade(UF, municipio, localidade);
+        Localidade l = LocalidadeFactory.getInstance().cadastrarLocalidade(UF, municipio, localidade);
 
         initLocTable();
         addUFTextField.setText("");
@@ -223,6 +236,32 @@ public class AddLocFrame extends javax.swing.JInternalFrame {
         this.dispose();
     }//GEN-LAST:event_btBackLocActionPerformed
 
+    private void btDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDeleteActionPerformed
+       int row = tabLoc.getSelectedRow();
+       int columnFam = 0;
+       int columnGen = 1; 
+       int columnEsp = 2;
+       
+       Object u = tabLoc.getValueAt(row, columnFam);
+       Object m = tabLoc.getValueAt(row, columnGen);
+       Object l = tabLoc.getValueAt(row, columnEsp);
+
+       String uf = u.toString();       
+       String municipio = m.toString();       
+       String localidade = l.toString(); 
+       
+       Localidade lRemove = LocalidadeFactory.getInstance().findLoc(uf, municipio, localidade);
+       
+       if((LocalidadeFactory.getInstance().deleteLoc(lRemove))==true){
+            initLocTable();
+       }
+       
+       else{
+           ImpossivelDeletar frame = new ImpossivelDeletar();
+           frame.setVisible(true);
+       }
+    }//GEN-LAST:event_btDeleteActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField addLocTextField;
@@ -231,6 +270,7 @@ public class AddLocFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btAddLoc;
     private javax.swing.JButton btBackLoc;
     private javax.swing.JButton btClearLoc;
+    private javax.swing.JButton btDelete;
     private javax.swing.JButton btShowLoc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
