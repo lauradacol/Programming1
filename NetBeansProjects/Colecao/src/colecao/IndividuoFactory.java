@@ -27,10 +27,10 @@ public class IndividuoFactory {
 		return i;
 	}	
 
-	public Individuo cadastrarIndividuo(Especie especie, String tombo, Coletor coletor, Localidade localidade, String data, String recipiente, String obs){
+	public Individuo cadastrarIndividuo(Especie especie, Coletor coletor, Localidade localidade, String data, String recipiente, String obs){
 		//System.out.println("Nome da Família: ");
 		
-		Individuo i1 = new Individuo(especie, tombo, coletor, localidade, data, recipiente, obs);
+		Individuo i1 = new Individuo(especie, coletor, localidade, data, recipiente, obs);
                 individuos.add(i1);
                 especie.individuos.add(i1);
                 localidade.individuos.add(i1);
@@ -44,11 +44,12 @@ public class IndividuoFactory {
 		return individuos;		
 	}
         
-        public Individuo findInd(String tombo){
+        public Individuo findInd(int tombo){
             Individuo i1 = null;
             
             for(Individuo i : individuos){
-                if(i.getTombo().equals(tombo)){
+                //if(i.getTombo().equals(tombo)){
+                if(i.getTombo() == tombo){ 
                     i1 = i;
                 }
             

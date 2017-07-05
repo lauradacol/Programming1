@@ -120,7 +120,8 @@ public class VerIndFrame extends javax.swing.JInternalFrame {
         
        Object t = tabInd.getValueAt(row, column);
        
-       String tombo = t.toString();
+       int tombo = Integer.valueOf(t.toString());
+       
        Individuo iRemove = IndividuoFactory.getInstance().findInd(tombo);
                 
        IndividuoFactory.getInstance().deleteInd(iRemove, iRemove.getLocalidade(), iRemove.getColetor(), iRemove.getEspecie());

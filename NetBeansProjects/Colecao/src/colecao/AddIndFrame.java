@@ -29,7 +29,6 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        addTOMBOTextField1 = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         addEspTextField = new javax.swing.JTextField();
@@ -65,16 +64,12 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
         btClearObs = new javax.swing.JButton();
         btAddInd = new javax.swing.JButton();
         btBackInd = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Tombar Indivíduo"));
 
-        addTOMBOTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                addTOMBOTextField1ActionPerformed(evt);
-            }
-        });
-
-        jLabel5.setText("NÚMERO TOMBO");
+        jLabel5.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        jLabel5.setText("NÚMERO TOMBO:");
 
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Dados Taxonômicos"));
 
@@ -341,6 +336,18 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Cantarell", 0, 24)); // NOI18N
+        jLabel1.setText("jLabel1");
+        jLabel1.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                jLabel1AncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -348,8 +355,8 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(addTOMBOTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -371,11 +378,11 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(5, 5, 5)
+                .addGap(10, 10, 10)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(addTOMBOTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addGap(23, 23, 23)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -416,7 +423,7 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btBackIndActionPerformed
 
     private void btAddIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAddIndActionPerformed
-        String tombo = addTOMBOTextField1.getText();
+        //String tombo = addTOMBOTextField1.getText();
         String nome = addNomeTextField.getText();
         String telefone = addTelTextField.getText();
         String email = addEmailTextField.getText();
@@ -434,9 +441,9 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
         Coletor coletor = ColetorFactory.getInstance().findCol(nome,telefone,email);
         Localidade localidade = LocalidadeFactory.getInstance().findLoc(uf,municipio,localidade1);
 
-        Individuo i = IndividuoFactory.getInstance().cadastrarIndividuo(especie, tombo, coletor, localidade, data, recipiente, obs);
+        Individuo i = IndividuoFactory.getInstance().cadastrarIndividuo(especie, coletor, localidade, data, recipiente, obs);
 
-        addTOMBOTextField1.setText("");
+        //addTOMBOTextField1.setText("");
         addNomeTextField.setText("");
         addTelTextField.setText("");
         addEmailTextField.setText("");
@@ -449,6 +456,8 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
         addLocTextField.setText("");
         addMunTextField.setText("");
         addUFTextField.setText("");
+        jLabel1.setText(String.valueOf(Individuo.getT()));
+                        
     }//GEN-LAST:event_btAddIndActionPerformed
 
     private void btClearObsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btClearObsActionPerformed
@@ -499,9 +508,9 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_addFamTextFieldActionPerformed
 
-    private void addTOMBOTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addTOMBOTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_addTOMBOTextField1ActionPerformed
+    private void jLabel1AncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_jLabel1AncestorAdded
+        jLabel1.setText(String.valueOf(Individuo.getT()));
+    }//GEN-LAST:event_jLabel1AncestorAdded
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -515,7 +524,6 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
     private javax.swing.JTextField addNomeTextField;
     private javax.swing.JTextField addObsTextField;
     private javax.swing.JTextField addRecTextField;
-    private javax.swing.JTextField addTOMBOTextField1;
     private javax.swing.JTextField addTelTextField;
     private javax.swing.JTextField addUFTextField;
     private javax.swing.JButton btAddInd;
@@ -524,6 +532,7 @@ public class AddIndFrame extends javax.swing.JInternalFrame {
     private javax.swing.JButton btClearLoc;
     private javax.swing.JButton btClearObs;
     private javax.swing.JButton btCleatTax;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

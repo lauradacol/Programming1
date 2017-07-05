@@ -12,23 +12,35 @@ package colecao;
 public class Individuo{
 
     private Especie especie;
-    private String tombo;
+    private int tombo;
     private Coletor coletor;
     private Localidade localidade;        
     private String data;
     private String recipiente;
     private String obs;
 
-    public Individuo(Especie especie, String tombo, Coletor coletor, Localidade localidade, String data, String recipiente, String obs){
+    private static int t = 0001;
+    
+    public Individuo(Especie especie, Coletor coletor, Localidade localidade, String data, String recipiente, String obs){
         this.especie = especie;
-        this.tombo = tombo;
+        //this.tombo = tombo;
         this.coletor = coletor;
         this.localidade = localidade;
         this.data = data;
         this.recipiente = recipiente;
-        this.obs = obs;              
+        this.obs = obs;     
+        
+        this.tombo = t;
+        t++;
     }
 
+    /**
+     * @return the t
+     */
+    public static int getT() {
+        return t;
+    }    
+    
     /**
      * @return the especie
      */
@@ -46,18 +58,10 @@ public class Individuo{
     /**
      * @return the tombo
      */
-    public String getTombo() {
+    public int getTombo() {
         return tombo;
     }
-
-    /**
-     * @param tombo the tombo to set
-     */
-    public void setTombo(String tombo) {
-        this.tombo = tombo;
-    }    
-    
-    
+   
     /**
      * @return the coletor
      */
@@ -132,6 +136,6 @@ public class Individuo{
     public String toString(){
             return this.getEspecie().toString() + this.coletor.toString() + this.localidade.toString() + this.data + this.recipiente + this.obs;
     }
-		
+ 		
 }
 
