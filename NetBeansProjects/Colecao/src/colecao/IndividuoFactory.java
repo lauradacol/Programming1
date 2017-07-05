@@ -57,6 +57,14 @@ public class IndividuoFactory {
             return i1;
         }
         
+        public void deleteInd(Individuo i, Localidade l, Coletor c, Especie e){
+            individuos.remove(i);
+            l.individuos.remove(i);
+            c.individuos.remove(i);
+            e.individuos.remove(i);
+                                        
+        }
+        
         
 }
 

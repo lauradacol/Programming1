@@ -122,8 +122,8 @@ public class VerIndFrame extends javax.swing.JInternalFrame {
        
        String tombo = t.toString();
        Individuo iRemove = IndividuoFactory.getInstance().findInd(tombo);
-       
-       IndividuoFactory.getInstance().individuos.remove(iRemove);
+                
+       IndividuoFactory.getInstance().deleteInd(iRemove, iRemove.getLocalidade(), iRemove.getColetor(), iRemove.getEspecie());
        initIndTable();        
     }//GEN-LAST:event_btDeletActionPerformed
 

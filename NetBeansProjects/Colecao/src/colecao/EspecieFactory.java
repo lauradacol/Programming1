@@ -60,9 +60,10 @@ public class EspecieFactory {
             return e1;            
         }
         
-        public boolean deleteEsp(Especie e){
+        public boolean deleteEsp(Especie e, Genero g){
             if(e.individuos.size() == 0){
                 especies.remove(e);
+                g.especies.remove(e);
                 return true;
             }
             

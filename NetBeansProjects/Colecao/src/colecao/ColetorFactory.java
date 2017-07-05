@@ -58,7 +58,7 @@ public class ColetorFactory {
 
         public boolean deleteCol(Coletor c){
             if(c.individuos.size() == 0){
-                coletores.remove(c);
+                coletores.remove(c);                
                 return true;
             }
             

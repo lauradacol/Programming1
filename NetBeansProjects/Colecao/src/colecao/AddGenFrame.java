@@ -224,7 +224,7 @@ public class AddGenFrame extends javax.swing.JInternalFrame {
       
        Genero gRemove = GeneroFactory.getInstance().findGen(familia,genero);
        
-       if((GeneroFactory.getInstance().deleteGen(gRemove))==true){
+       if((GeneroFactory.getInstance().deleteGen(gRemove, gRemove.getFamilia()))==true){
             initGenTable();
        }
        

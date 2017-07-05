@@ -58,9 +58,10 @@ public class GeneroFactory {
             return g1;            
         }
 
-        public boolean deleteGen(Genero g){
+        public boolean deleteGen(Genero g, Familia f){
             if(g.especies.size() == 0){
                 generos.remove(g);
+                f.generos.remove(g);
                 return true;
             }
             

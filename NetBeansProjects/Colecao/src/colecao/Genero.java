@@ -35,8 +35,8 @@ public class Genero{
 		return this.nome;		
 	}
 
-	public String getFamilia(){
-		return this.familia.toString();		
+	public Familia getFamilia(){
+		return this.familia;		
 	}
         
 	public String toString(){

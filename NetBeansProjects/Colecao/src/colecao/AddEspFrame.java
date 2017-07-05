@@ -253,7 +253,7 @@ public class AddEspFrame extends javax.swing.JInternalFrame {
        
        Especie eRemove = EspecieFactory.getInstance().findEsp(familia,genero,especie);
        
-       if((EspecieFactory.getInstance().deleteEsp(eRemove))==true){
+       if((EspecieFactory.getInstance().deleteEsp(eRemove, eRemove.getGenero()))==true){
             initEspTable();
        }
        
